@@ -1,0 +1,42 @@
+{
+  "name": "tv-modal",
+  "version": "1.0.0",
+  "description": "programmatic modals for nuxtjs powered by tailwindcss",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/acidjazz/tv-modal.git"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "tailwindcss",
+    "modal"
+  ],
+  "author": "kevin olson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acidjazz/tv-modal/issues"
+  },
+  "homepage": "https://github.com/acidjazz/tv-modal#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.11.0",
+    "@vue/test-utils": "^1.0.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "eslint": "^7.7.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "jest": "^26.4.2",
+    "vue": "^2.6.12",
+    "vue-jest": "^3.0.6",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {
+    "tv-button": "^1.0.7",
+    "tv-icon": "^1.0.1"
+  }
+}
