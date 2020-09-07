@@ -1,67 +1,110 @@
 <template>
-  <div class="fixed z-10 inset-0 overflow-y-auto" id="ModalBase">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      <transition
-        enter-active-class="ease-out duration-300"
-        enter-class="opacity-0"
-        enter-to-class="opacity-100"
-        leave-active-class="ease-in duration-200"
-        leave-class="opacity-100"
-        leave-to-class="opacity-0">
-        <div class="fixed inset-0 transition-opacity" v-if="active" @click="destroy">
-          <div class="absolute inset-0 bg-black opacity-75"></div>
-          <div class="fixed top-0 right-0 p-3">
-            <div class="p-3 cursor-pointer rounded-full transition ease-in-out duration-150 hover:bg-gray-800">
-              <IconTimes class="w-6 h-6" primary="text-gray-200" secondary="text-gray-300"></IconTimes>
-            </div>
-          </div>
+  <ModalBase ref="ModalBase" :active="active" :destroyed="destroy">
+    <div class="sm:flex sm:items-start">
+      <div
+        :class="typeColors[type]"
+        class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
+        <IconInfo v-if="type === 'info'" class="h-5 w-5" primary="text-blue-600" secondary="text-blue-500" />
+        <IconBang v-if="type === 'danger'" class="h-5 w-5" primary="text-red-600" secondary="text-red-500" />
+      </div>
+      <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+          {{ title }}
+        </h3>
+        <div class="mt-2">
+          <p class="text-sm leading-5 text-gray-500">
+            {{ body }}
+          </p>
         </div>
-      </transition>
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&nbsp;</span>
-      <transition
-        enter-active-class="ease-out duration-300"
-        enter-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        enter-to-class="opacity-100 translate-y-0 sm:scale-100"
-        leave-active-class="ease-in duration-200"
-        leave-class="opacity-100 translate-y-0 sm:scale-100"
-        leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-        <div
-          v-if="active"
-          class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-headline">
-          <slot />
-        </div>
-      </transition>
+      </div>
     </div>
-  </div>
+    <div v-if="primary" class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+      <PushButton
+        v-if="primary"
+        class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto"
+        :theme="primary.theme"
+        @click="action('primary')"
+      >
+        {{ primary.label }}
+      </PushButton>
+      <PushButton
+        v-if="secondary"
+        class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
+        :theme="secondary.theme"
+        @click="action('secondary')"
+      >
+        {{ secondary.label }}
+      </PushButton>
+    </div>
+  </ModalBase>
 </template>
 
 <script>
-import { IconTimes } from 'tv-icon'
+import { removeElement } from '@/plugins/utils'
+import ModalBase from './ModalBase.vue'
+import { PushButton } from 'tv-button'
+import { IconBang, IconInfo } from 'tv-icon'
 export default {
-  components: { IconTimes },
+  components: { ModalBase, PushButton, IconBang, IconInfo },
   props: {
-    destroyed: {
-      type: Function,
+    type: {
+      type: String,
       required: false,
-      default: () => {},
+      default: 'info',
+      validate: (type) => { return ['success', 'info', 'danger', 'warning'].includes(type) },
+    },
+    title: {
+      type: [Boolean, String],
+      required: false,
+      default: false,
+    },
+    body: {
+      type: String,
+      required: true,
+    },
+    primary: {
+      type: [Boolean, Object],
+      required: false,
+      default: false,
+    },
+    secondary: {
+      type: [Boolean, Object],
+      required: false,
+      default: false,
     },
   },
   data () {
     return {
       active: false,
+      typeColors: {
+        danger: "bg-red-100",
+        info: "bg-blue-100",
+      }
     }
   },
-  mounted () {
+  async mounted () {
+    console.log('firing GlobalModal mounted()')
+    await this.$sleep(100)
     this.active = true
+    await this.$sleep(100)
   },
   methods: {
-    async destroy () {
+    async focus (index = 0) {
+      await this.$sleep(200)
+      document.getElementById(`modal-button-${index}`).focus()
+    },
+    action (type) {
+      if (type === 'primary')
+        this.primary.action()
+      if (type === 'secondary')
+        this.secondary.action()
+      this.$refs.ModalBase.destroy()
+    },
+    async destroy ()  {
       this.active = false
       await this.$sleep(200)
-      this.destroyed()
+      this.$destroy()
+      removeElement(this.$el)
     },
   },
 }

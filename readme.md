@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="media/modal.png" width="600" />
+  <img src="media/modal.gif" width="600" />
 </p>
 
 [![](https://img.shields.io/npm/v/tv-modal.svg?logo=npm&style=flat-square)](https://www.npmjs.com/package/tv-modal)
