@@ -61,5 +61,5 @@ module.exports = {
 ```
 
 <p align="center">
-  <img src="media/example1.gif" width="600" />
+  <img src="media/example1.gif" width="800" />
 </p>
