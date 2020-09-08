@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils'
-import GlobalModal from '@/GlobalModal'
+import ModalBase from '@/ModalBase'
 
 describe('tv-toast', () => {
     test('is a Vue instance', () => {
-        const wrapper = mount(GlobalModal)
+        const wrapper = mount(ModalBase)
         expect(wrapper.vm).toBeTruthy()
     })
 })
