@@ -39,6 +39,9 @@ module.exports = {
 
 ## Usage
 
+- Actions are buttons from [tv-button](https://github.com/acidjazz/tv-button)
+- Combining toasts from [tv-toast](https://github.com/acidjazz/tv-toast)
+
 ```js
  this.$modal.show({
     type: 'danger',
@@ -57,5 +60,6 @@ module.exports = {
   })
 ```
 
-![](media/example1.gif?raw=true)
-
+<p align="center">
+  <img src="media/example1.gif" width="600" />
+</p>
