@@ -36,3 +36,26 @@ module.exports = {
       './node_modules/tv-modal/**/*.vue'
   }
 ```
+
+## Usage
+
+```js
+ this.$modal.show({
+    type: 'danger',
+    title: 'This is the title property',
+    body: 'This is the body property.  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius aliquam laudantium explicabo pariatur iste dolorem animi vitae error totam.',
+    primary: {
+      label: 'Primary Action',
+      theme: 'red',
+      action: () => this.$toast.success('Primary Button clicked'),
+    },
+    secondary: {
+      label: 'Secondary Button',
+      theme: 'white',
+      action: () => this.$toast.info('Clicked Secondary'),
+    },
+  })
+```
+
+![](media/example1.gif?raw=true)
+

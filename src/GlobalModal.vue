@@ -93,12 +93,13 @@ export default {
       await this.$sleep(200)
       document.getElementById(`modal-button-${index}`).focus()
     },
-    action (type) {
+    async action (type) {
+      this.$refs.ModalBase.destroy()
+      await this.$sleep(200)
       if (type === 'primary')
         this.primary.action()
       if (type === 'secondary')
         this.secondary.action()
-      this.$refs.ModalBase.destroy()
     },
     async destroy ()  {
       this.active = false
