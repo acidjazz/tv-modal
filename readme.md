@@ -63,3 +63,21 @@ module.exports = {
 <p align="center">
   <img src="media/example1.gif" width="800" />
 </p>
+
+
+## Options
+
+### `type` __String__
+ - Optional, Default: info
+ - Acceptable: success, info, danger, warning
+### `title` __String__
+ - Optional, Default: false
+### `body` __String__
+ - Required
+### `primary` __Object__
+ - Optional, Default: false
+ - Example: { label: 'Button Face', theme: 'indigo-light', action: () => console.log('clicked') }
+### `secondary` __Object__
+ - Optional, Default: false
+ - Example: { label: 'Button Face', theme: 'indigo-light', action: () => console.log('clicked') }
+ 

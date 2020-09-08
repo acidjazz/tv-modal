@@ -4,8 +4,10 @@
       <div
         :class="typeColors[type]"
         class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
+        <IconCheck v-if="type === 'success'" class="h-5 w-5" primary="text-green-600" secondary="text-green-500" />
         <IconInfo v-if="type === 'info'" class="h-5 w-5" primary="text-blue-600" secondary="text-blue-500" />
         <IconBang v-if="type === 'danger'" class="h-5 w-5" primary="text-red-600" secondary="text-red-500" />
+        <IconBang v-if="type === 'warning'" class="h-5 w-5" primary="text-yellow-600" secondary="text-yellow-500" />
       </div>
       <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
@@ -43,9 +45,9 @@
 import { removeElement } from '@/plugins/utils'
 import ModalBase from './ModalBase.vue'
 import { PushButton } from 'tv-button'
-import { IconBang, IconInfo } from 'tv-icon'
+import { IconCheck, IconInfo, IconBang } from 'tv-icon'
 export default {
-  components: { ModalBase, PushButton, IconBang, IconInfo },
+  components: { ModalBase, PushButton, IconCheck, IconInfo, IconBang },
   props: {
     type: {
       type: String,
@@ -77,8 +79,10 @@ export default {
     return {
       active: false,
       typeColors: {
-        danger: "bg-red-100",
-        info: "bg-blue-100",
+        success: 'bg-green-100',
+        info: 'bg-blue-100',
+        danger: 'bg-red-100',
+        warning: 'bg-yellow-100',
       }
     }
   },
