@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { removeElement } from '@/plugins/utils'
+import { removeElement } from 'tv-modal'
 import ModalBase from './ModalBase.vue'
 import { PushButton } from 'tv-button'
 import { IconCheck, IconInfo, IconBang } from 'tv-icon'
