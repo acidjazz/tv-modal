@@ -87,10 +87,7 @@ export default {
     }
   },
   async mounted () {
-    console.log('firing GlobalModal mounted()')
-    await this.$sleep(100)
     this.active = true
-    await this.$sleep(100)
   },
   methods: {
     async focus (index = 0) {
