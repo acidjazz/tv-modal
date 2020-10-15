@@ -91,12 +91,10 @@ export default {
   },
   methods: {
     async focus (index = 0) {
-      await this.$sleep(200)
       document.getElementById(`modal-button-${index}`).focus()
     },
     async action (type) {
       this.$refs.ModalBase.destroy()
-      await this.$sleep(200)
       if (type === 'primary')
         this.primary.action()
       if (type === 'secondary')
@@ -104,7 +102,6 @@ export default {
     },
     async destroy ()  {
       this.active = false
-      await this.$sleep(200)
       this.$destroy()
       removeElement(this.$el)
     },
