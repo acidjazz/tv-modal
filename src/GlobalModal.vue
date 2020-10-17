@@ -23,6 +23,7 @@
     <div v-if="primary" class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
       <PushButton
         v-if="primary"
+        ref="primary"
         class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto"
         :theme="primary.theme"
         @click="action('primary')"
@@ -88,6 +89,8 @@ export default {
   },
   async mounted () {
     this.active = true
+    if (this.primary && this.$refs.primary)
+      setTimeout(() => this.$refs.primary.$el.firstChild.focus(), 200)
   },
   methods: {
     async focus (index = 0) {
