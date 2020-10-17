@@ -89,8 +89,10 @@ export default {
   },
   async mounted () {
     this.active = true
-    if (this.primary && this.$refs.primary)
-      setTimeout(() => this.$refs.primary.$el.firstChild.focus(), 200)
+    setTimeout(() => {
+      if (this.primary && this.$refs.primary)
+        this.$refs.primary.$el.firstChild.focus()
+    }, 200)
   },
   methods: {
     async focus (index = 0) {
