@@ -2,9 +2,13 @@
   "name": "tv-modal",
   "version": "1.0.7",
   "description": "programmatic modals for nuxtjs powered by tailwindcss",
-  "main": "src/index.js",
+  "main": "dist/tv-modal.umd.min.js",
+  "files": [
+    "dist/tv-modal.umd.min.js"
+  ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "vue-cli-service build --target lib --name tv-modal src/index.js"
   },
   "repository": {
     "type": "git",
