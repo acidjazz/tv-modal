@@ -1,6 +1,6 @@
 {
   "name": "tv-modal",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "programmatic modals for nuxtjs powered by tailwindcss",
   "main": "dist/tv-modal.umd.min.js",
   "files": [
