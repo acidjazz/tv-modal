@@ -66,8 +66,7 @@ export default {
   methods: {
     async destroy () {
       this.active = false
-      await this.$sleep(200)
-      this.destroyed()
+      setTimeout(() => this.destroyed, 200)
     },
   },
 }
