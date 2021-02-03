@@ -75,6 +75,11 @@ export default {
       required: false,
       default: false,
     },
+    cancel: {
+      type: Function,
+      required: false,
+      default: () => {},
+    },
   },
   data () {
     return {
@@ -108,6 +113,7 @@ export default {
     async destroy ()  {
       this.active = false
       this.$destroy()
+      this.cancel()
       removeElement(this.$el)
     },
   },
