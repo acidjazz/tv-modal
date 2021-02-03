@@ -76,9 +76,9 @@ export default {
       default: false,
     },
     cancel: {
-      type: Function,
+      type: [Boolean, Function],
       required: false,
-      default: () => {},
+      default: false,
     },
   },
   data () {
@@ -112,7 +112,7 @@ export default {
     },
     async destroy ()  {
       this.active = false
-      this.cancel()
+      if (this.cancel) this.cancel()
       this.$destroy()
       removeElement(this.$el)
     },
