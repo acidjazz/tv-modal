@@ -112,8 +112,8 @@ export default {
     },
     async destroy ()  {
       this.active = false
-      this.$destroy()
       this.cancel()
+      this.$destroy()
       removeElement(this.$el)
     },
   },
