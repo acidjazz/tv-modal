@@ -8,9 +8,9 @@
         leave-active-class="ease-in duration-200"
         leave-class="opacity-100"
         leave-to-class="opacity-0">
-        <div class="fixed inset-0 transition-opacity" v-if="active" @click="destroy">
+        <div class="fixed inset-0 transition-opacity" v-if="active" @click="backdropDismiss && destroy()">
           <div class="absolute inset-0 bg-black opacity-75"></div>
-          <div class="fixed top-0 right-0 p-3">
+          <div v-if="backdropDismiss" class="fixed top-0 right-0 p-3">
             <div class="p-3 cursor-pointer rounded-full transition ease-in-out duration-150 hover:bg-gray-800">
               <IconTimes class="w-6 h-6" primary="text-gray-200" secondary="text-gray-300"></IconTimes>
             </div>
@@ -54,6 +54,11 @@ export default {
       required: false,
       default: '',
     },
+    backdropDismiss: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
   },
   data () {
     return {

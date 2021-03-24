@@ -1,5 +1,5 @@
 <template>
-  <ModalBase ref="ModalBase" :active="active" :destroyed="destroy">
+  <ModalBase ref="ModalBase" :active="active" :destroyed="destroy" :backdropDismiss="backdropDismiss">
     <div class="sm:flex sm:items-start">
       <div 
         v-if="type!='clean'"
@@ -71,8 +71,9 @@ export default {
       default: false,
     },
     body: {
-      type: String,
-      required: true,
+      type: [Boolean, String],
+      required: false,
+      default: false,
     },
     primary: {
       type: [Boolean, Object],
@@ -89,6 +90,16 @@ export default {
       required: false,
       default: false,
     },
+    backdropDismiss: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    destroyed: {
+      type: Function,
+      required: false,
+      default: () => {}
+    }
   },
   data () {
     return {
@@ -124,6 +135,7 @@ export default {
       this.active = false
       this.$destroy()
       removeElement(this.$el)
+      setTimeout(() => { this.destroyed() }, 200)
     },
   },
 }

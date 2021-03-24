@@ -69,6 +69,10 @@ module.exports = {
         placeholder: "Enter your last name",
       }
     ],
+    backdropDismiss: false,
+    destroyed: () => {
+      console.log("modal was closed");
+    },
   })
 ```
 
@@ -85,7 +89,7 @@ module.exports = {
 ### `title` __String__
  - Optional, Default: false
 ### `body` __String__
- - Required
+ - Optional, Default: false
 ### `primary` __Object__
  - Optional, Default: false
  - Example: { label: 'Button Face', theme: 'indigo-light', action: () => console.log('clicked') }
@@ -95,4 +99,9 @@ module.exports = {
  ### `fields` __Array__
  - Optional, Default: []
  - Example: [{ label: 'Your Name', 'name':'field_name' }]
+ ### `backdropDismiss` __Boolean__
+ - Optional, Default: true
+ - Description, If true, the modal will be dismissed when the backdrop is clicked.
+  ### `backdropDismiss` __Function__
+ - Optional, Default: () => {}
  
