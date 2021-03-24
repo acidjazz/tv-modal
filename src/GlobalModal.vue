@@ -1,7 +1,8 @@
 <template>
   <ModalBase ref="ModalBase" :active="active" :destroyed="destroy">
     <div class="sm:flex sm:items-start">
-      <div
+      <div 
+        v-if="type!='clean'"
         :class="typeColors[type]"
         class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
         <IconCheck v-if="type === 'success'" class="h-5 w-5" primary="text-green-600" secondary="text-green-500" />
@@ -9,11 +10,11 @@
         <IconBang v-if="type === 'danger'" class="h-5 w-5" primary="text-red-600" secondary="text-red-500" />
         <IconBang v-if="type === 'warning'" class="h-5 w-5" primary="text-yellow-600" secondary="text-yellow-500" />
       </div>
-      <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+      <div class="mt-3 text-center sm:mt-0 sm:text-left" :class="{'sm:ml-4':type!=='clean'}">
         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
           {{ title }}
         </h3>
-        <div class="mt-2">
+        <div v-if="body" class="mt-2">
           <p class="text-sm leading-5 text-gray-500">
             {{ body }}
           </p>
