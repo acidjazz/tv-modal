@@ -51,11 +51,15 @@ module.exports = {
       label: 'Primary Action',
       theme: 'red',
       action: () => this.$toast.success('Primary Button clicked'),
-      validate(fields) {
+      validate: (fields) => {
         if (fields.last && fields.last != '') {
           return true;
         } else {
-          alert("Last is required")
+          this.$toast.show({
+            type: 'danger',
+            title: 'Error',
+            message: 'Last Name is required',
+          })
           return false
         }
       }
