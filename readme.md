@@ -57,6 +57,18 @@ module.exports = {
       theme: 'white',
       action: () => this.$toast.info('Clicked Secondary'),
     },
+    fields: [
+      {
+        label: 'First Name',
+        name: 'first',
+        value: "My First Name"
+      },
+      {
+        label: 'Last Name',
+        name: 'last',
+        placeholder: "Enter your last name",
+      }
+    ],
   })
 ```
 
@@ -69,7 +81,7 @@ module.exports = {
 
 ### `type` __String__
  - Optional, Default: info
- - Acceptable: success, info, danger, warning
+ - Acceptable: success, info, danger, warning, none
 ### `title` __String__
  - Optional, Default: false
 ### `body` __String__
@@ -80,4 +92,7 @@ module.exports = {
 ### `secondary` __Object__
  - Optional, Default: false
  - Example: { label: 'Button Face', theme: 'indigo-light', action: () => console.log('clicked') }
+ ### `fields` __Array__
+ - Optional, Default: []
+ - Example: [{ label: 'Your Name', 'name':'field_name' }]
  

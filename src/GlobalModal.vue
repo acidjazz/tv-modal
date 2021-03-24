@@ -20,6 +20,14 @@
         </div>
       </div>
     </div>
+    <div v-if="fields.length" class="py-2">
+        <div v-for="field in fields" v-bind:key="field.name">
+            <label :for="field.name" class="block text-sm font-medium text-gray-700">{{field.label}}</label>
+            <div class="mt-1">
+              <input type="text" :name="field.name" v-model="field.value" :id="field.name" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" :placeholder="field.placeholder?field.placeholder : ''">
+            </div>
+        </div>
+    </div>
     <div v-if="primary" class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
       <PushButton
         v-if="primary"
@@ -54,7 +62,7 @@ export default {
       type: String,
       required: false,
       default: 'info',
-      validate: (type) => { return ['success', 'info', 'danger', 'warning'].includes(type) },
+      validate: (type) => { return ['success', 'info', 'danger', 'warning', 'clean'].includes(type) },
     },
     title: {
       type: [Boolean, String],
@@ -75,6 +83,11 @@ export default {
       required: false,
       default: false,
     },
+    fields: {
+      type: [Boolean, Array],
+      required: false,
+      default: false,
+    },
   },
   data () {
     return {
@@ -84,6 +97,7 @@ export default {
         info: 'bg-blue-100',
         danger: 'bg-red-100',
         warning: 'bg-yellow-100',
+        clean: 'bg-transparent'
       }
     }
   },
@@ -101,9 +115,9 @@ export default {
     async action (type) {
       this.$refs.ModalBase.destroy()
       if (type === 'primary')
-        this.primary.action()
+        this.primary.action({fields:this.fields})
       if (type === 'secondary')
-        this.secondary.action()
+        this.secondary.action({fields:this.fields})
     },
     async destroy ()  {
       this.active = false
