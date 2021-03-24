@@ -25,7 +25,7 @@
         <div v-for="field in fields" v-bind:key="field.name">
             <label :for="field.name" class="block text-sm font-medium text-gray-700">{{field.label}}</label>
             <div class="mt-1">
-              <input type="text" :name="field.name" v-model="field.value" :id="field.name" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" :placeholder="field.placeholder?field.placeholder : ''">
+              <input type="text" :name="field.name" v-model="field.value" :id="field.name" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" :placeholder="field.placeholder?field.placeholder : ''" :required="field.required">
             </div>
         </div>
     </div>
@@ -125,11 +125,15 @@ export default {
       document.getElementById(`modal-button-${index}`).focus()
     },
     async action (type) {
-      this.$refs.ModalBase.destroy()
-      if (type === 'primary')
-        this.primary.action({fields:this.fields})
-      if (type === 'secondary')
-        this.secondary.action({fields:this.fields})
+      let action = this[type].action
+      let fields = {};
+      this.fields.forEach(field => {
+        fields[field.name] = field.value;
+      })
+      if(!this[type].validate || this[type].validate(fields)){
+        this.$refs.ModalBase.destroy()
+        this[type].action(fields)
+      }
     },
     async destroy ()  {
       this.active = false

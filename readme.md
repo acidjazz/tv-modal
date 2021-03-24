@@ -51,6 +51,14 @@ module.exports = {
       label: 'Primary Action',
       theme: 'red',
       action: () => this.$toast.success('Primary Button clicked'),
+      validate(fields) {
+        if (fields.last && fields.last != '') {
+          return true;
+        } else {
+          alert("Last is required")
+          return false
+        }
+      }
     },
     secondary: {
       label: 'Secondary Button',
