@@ -127,7 +127,7 @@ export default {
     async action (type) {
       let action = this[type].action
       let fields = {};
-      this.fields.forEach(field => {
+      this.fields && this.fields.forEach(field => {
         fields[field.name] = field.value;
       })
       if(!this[type].validate || this[type].validate(fields)){
