@@ -22,7 +22,6 @@
       <div v-for="(field,index) in fields" v-bind:key="field.name">
         <label :for="field.name" class="block text-sm font-medium text-gray-700">{{field.label}}</label>
         <div class="mt-1">
-          i{{index}}
           <input type="text" :name="field.name" v-model="field.value" :id="field.name" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" :placeholder="field.placeholder?field.placeholder : ''" :required="field.required" :ref="`field${index}`">
         </div>
       </div>
