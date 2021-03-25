@@ -114,6 +114,4 @@ module.exports = {
  ### `backdropDismiss` __Boolean__
  - Optional, Default: true
  - Description, If true, the modal will be dismissed when the backdrop is clicked.
-  ### `backdropDismiss` __Function__
- - Optional, Default: () => {}
  
