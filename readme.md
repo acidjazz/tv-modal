@@ -51,11 +51,39 @@ module.exports = {
       label: 'Primary Action',
       theme: 'red',
       action: () => this.$toast.success('Primary Button clicked'),
+      validate: (fields) => {
+        if (fields.last && fields.last != '') {
+          return true;
+        } else {
+          this.$toast.show({
+            type: 'danger',
+            title: 'Error',
+            message: 'Last Name is required',
+          })
+          return false
+        }
+      }
     },
     secondary: {
       label: 'Secondary Button',
       theme: 'white',
       action: () => this.$toast.info('Clicked Secondary'),
+    },
+    fields: [
+      {
+        label: 'First Name',
+        name: 'first',
+        value: "My First Name"
+      },
+      {
+        label: 'Last Name',
+        name: 'last',
+        placeholder: "Enter your last name",
+      }
+    ],
+    backdropDismiss: false,
+    destroyed: () => {
+      console.log("modal was closed");
     },
   })
 ```
@@ -69,15 +97,21 @@ module.exports = {
 
 ### `type` __String__
  - Optional, Default: info
- - Acceptable: success, info, danger, warning
+ - Acceptable: success, info, danger, warning, none
 ### `title` __String__
  - Optional, Default: false
 ### `body` __String__
- - Required
+ - Optional, Default: false
 ### `primary` __Object__
  - Optional, Default: false
  - Example: { label: 'Button Face', theme: 'indigo-light', action: () => console.log('clicked') }
 ### `secondary` __Object__
  - Optional, Default: false
  - Example: { label: 'Button Face', theme: 'indigo-light', action: () => console.log('clicked') }
+ ### `fields` __Array__
+ - Optional, Default: []
+ - Example: [{ label: 'Your Name', 'name':'field_name' }]
+ ### `backdropDismiss` __Boolean__
+ - Optional, Default: true
+ - Description, If true, the modal will be dismissed when the backdrop is clicked.
  
