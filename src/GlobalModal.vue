@@ -14,9 +14,7 @@
           {{ title }}
         </h3>
         <div class="mt-2">
-          <p class="text-sm leading-5 text-gray-500">
-            {{ body }}
-          </p>
+          <p class="text-sm leading-5 text-gray-500" v-html="body"></p>
         </div>
       </div>
     </div>
