@@ -10,7 +10,7 @@
         <IconBang v-if="type === 'warning'" class="h-5 w-5" primary="text-yellow-600" secondary="text-yellow-500" />
       </div>
       <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-300" id="modal-headline">
           {{ title }}
         </h3>
         <div class="mt-2">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div v-if="primary" class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-      <PushButton
+      <push-button
         v-if="primary"
         ref="primary"
         class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto"
@@ -27,15 +27,15 @@
         @click.native="action('primary')"
       >
         {{ primary.label }}
-      </PushButton>
-      <PushButton
+      </push-button>
+      <push-button
         v-if="secondary"
         class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
         :theme="secondary.theme"
         @click.native="action('secondary')"
       >
         {{ secondary.label }}
-      </PushButton>
+      </push-button>
     </div>
   </ModalBase>
 </template>

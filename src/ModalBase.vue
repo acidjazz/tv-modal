@@ -12,7 +12,11 @@
           <div class="absolute inset-0 bg-black opacity-75"></div>
           <div class="fixed top-0 right-0 p-3">
             <div class="p-3 cursor-pointer rounded-full transition ease-in-out duration-150 hover:bg-gray-800">
-              <IconTimes class="w-6 h-6" primary="text-gray-200" secondary="text-gray-300"></IconTimes>
+              <icon-times
+                class="w-6 h-6"
+                primary="text-gray-200 dark:text-gray-400"
+                secondary="text-gray-300 dark:text-gray-500"
+              />
             </div>
           </div>
         </div>
@@ -27,7 +31,7 @@
         leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
         <div
           v-if="active"
-          class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:w-full sm:p-6"
+          class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:w-full sm:p-6"
           :class="[innerClass, maxWidth]"
           role="dialog"
           aria-modal="true"

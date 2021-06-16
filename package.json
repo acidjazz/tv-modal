@@ -4,7 +4,8 @@
   "description": "programmatic modals for nuxtjs powered by tailwindcss",
   "main": "dist/tv-modal.umd.min.js",
   "files": [
-    "dist/tv-modal.umd.min.js"
+    "dist/tv-modal.umd.min.js",
+    "types/"
   ],
   "scripts": {
     "test": "jest",
