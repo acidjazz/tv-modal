@@ -14,7 +14,7 @@
           {{ title }}
         </h3>
         <div class="mt-2">
-          <p class="text-sm leading-5 text-gray-500" v-html="body"></p>
+          <p class="text-sm leading-5" v-html="body"></p>
         </div>
       </div>
     </div>
@@ -78,10 +78,10 @@ export default {
     return {
       active: false,
       typeColors: {
-        success: 'bg-green-100',
-        info: 'bg-blue-100',
-        danger: 'bg-red-100',
-        warning: 'bg-yellow-100',
+        success: 'bg-green-100 dark:bg-green-900',
+        info: 'bg-blue-100 dark:bg-blue-900',
+        danger: 'bg-red-100 dark:bg-red-900',
+        warning: 'bg-yellow-100 dark:bg-yellow-900',
       }
     }
   },
