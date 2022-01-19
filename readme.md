@@ -37,6 +37,16 @@ module.exports = {
   }
 ```
 
+To use with Nuxt Windi CSS, add this module to your `windi.config.js`
+```js
+import { defineConfig } from  'windicss/helpers'
+	export  default  defineConfig({
+	extract: {
+		include: ['node_modules/tv-*/dist/tv-*.umd.min.js'],
+	},
+})
+```
+
 ## Usage
 
 - Actions are buttons from [tv-button](https://github.com/acidjazz/tv-button)
