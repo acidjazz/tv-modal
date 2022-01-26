@@ -9,7 +9,7 @@
         <IconBang v-if="type === 'danger'" class="h-5 w-5" primary="text-red-600" secondary="text-red-500" />
         <IconBang v-if="type === 'warning'" class="h-5 w-5" primary="text-yellow-600" secondary="text-yellow-500" />
       </div>
-      <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+      <div class="mt-3 text-center w-full sm:mt-0 sm:ml-4 sm:text-left">
         <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-300" id="modal-headline">
           {{ title }}
         </h3>
