@@ -21,7 +21,7 @@
           </div>
         </div>
       </transition>
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&nbsp;</span>
+      <span class="hidden sm:align-middle sm:h-screen">&nbsp;</span>
       <transition
         enter-active-class="ease-out duration-300"
         enter-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
